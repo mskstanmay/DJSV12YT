@@ -33,7 +33,7 @@ bot.on('ready', () => {
     if(message.channel.type === "dm") return;  
 
     let messageArray = message.content.split(" ");
-    let command = messageArray[0];
+    let command = messageArray[0].toLowerCase();
     let args = messageArray.slice(1);
 
     if(!command.startsWith(prefix)) return;
