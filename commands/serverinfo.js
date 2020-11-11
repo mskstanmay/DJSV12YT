@@ -9,14 +9,12 @@ let server = message.guild;
     .setTitle(`SERVERINFO OF __${server.name}__`)
     .setColor('RANDOM')
     .setThumbnail(server.iconURL({dynamic:true}))
- //   .setDescription(` \n `)
-  //  .addField(`ID: `,`${server.id}`,true)
     .addField(`Owner: `,`${server.owner}(ID:${server.ownerID})`,true)
     .addField(`REGION: `,`${server.region}`,true)
     .addField(`Channels`,`${server.channels.cache.size}`,true)
     .addField(`Members`,`${server.members.cache.size}`,true)
     .addField(`Roles`,`${server.roles.cache.size}`,true)
-   // .addField(``,``,true)
+    .addField(`Created At`,`${server.createdAt}`,true)
     message.channel.send(serverinfoembed)
 }
 

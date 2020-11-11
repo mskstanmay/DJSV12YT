@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 
 module.exports.run = (bot,message,args)=>{   
 
-    let target = message.mentions.users.first() || message.guild.members.cache.get(args[1]) || message.author;
+    let target = message.guild.members.cache.get(message.mentions.users.first()) || message.guild.members.cache.get(args[1]) || message.author;
 if(!target) return message.reply(`No User Mentioned !`)
     let userinfoembed = new Discord.MessageEmbed()
     .setColor('RANDOM')

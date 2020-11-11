@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require('./config.json')
-
+const { CanvasSenpai } = require("canvas-senpai")
+const canva = new CanvasSenpai();
 const fs = require('fs');
 bot.commands = new Discord.Collection();
 
@@ -25,9 +26,31 @@ jsfiles.forEach((f,i)=>{
 
 const prefix = config.prefix ;
 
+bot.on('guildMemberAdd', async member => {
+const WELCOMECHAN = bot.channels.cache.get('776058851802873868')
+if(!WELCOMECHAN) return console.log(`WELCOME CHANNEL NOT FOUND !`);
+let data = await canva.welcome(member, { gradiant: "peakblue" })
+ 
+const attachment = new Discord.MessageAttachment(
+  data,
+  "welcome-image.png"
+);
+
+WELCOMECHAN.send(`Welcome to the server, ${member.user.username}!`,attachment);  
+});
+
+
+
 bot.on('ready', () => {
+bot.user.setActivity('Teaching Youtube !', { type: 'STREAMING' })
+
+
   console.log(`Logged in as ${bot.user.tag}!`);
   });
+
+
+
+
   bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;  
@@ -45,4 +68,8 @@ bot.on('ready', () => {
 
 bot.login(config.token);
 
+
+function newFunction(member) {
+  return member.guild.channels.cache.find(ch => ch.name === 'member-log');
+}
 

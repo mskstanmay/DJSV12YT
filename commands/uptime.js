@@ -1,14 +1,11 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-
+const ms = require('ms');
 
 module.exports.run = (bot,message,args)=>{
-
-    if(message.author.id != "685101975385276469") return message.reply(`You're Not A Owner ! `);
-
-    message.reply(`Pong!`);
+    message.reply(`${ms(bot.uptime)}`)
 }
 
 module.exports.help ={
-    name:"ping"
+    name:"uptime"
 }
