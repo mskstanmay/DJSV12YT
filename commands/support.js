@@ -6,7 +6,7 @@ module.exports.run = (bot,message,args)=>{
     const embed = new Discord.MessageEmbed()
     .setColor('RANDOM')
     .setTitle(`SUPPORT SERVER INVITE`)
-    .setDescription(`[CLICK HERE](https://discord.gg/aimop)`)
+    .setDescription(`[CLICK HERE](https://discord.gg/UatfmrmT)`)
     message.channel.send(embed);
 
 }
