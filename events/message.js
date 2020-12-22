@@ -1,13 +1,13 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const { prefix } = require('../config.json')
+const {prefix} = require('../config.json')
 
 module.exports = async(bot,message)=>{
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;  
 
-  if((message.content === `<@${bot.user.id}>`) || (message.content === `<@!${bot.user.id}>`)){
-    message.channel.send(`My Prefix is \`${prefix}\``)
+  if((message.content === "<@743440564455866399>") || (message.content === "<@!743440564455866399>")){
+    message.channel.send(`My Prefix is \`${config.prefix}\``)
   }
 
   let messageArray = message.content.split(" ");

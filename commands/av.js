@@ -1,18 +1,14 @@
-const {Client , MessageEmbed} = require('discord.js');
-const bot = new Client();
+const Discord = require('discord.js');
+const bot = new Discord.Client();
 
 
 module.exports.run = (bot,message,args)=>{
-    let target = message.mentions.members.first() || message.member
+  
+    let target = message.guild.members.cache.get(message.mentions.users.first()) || bot.users.cache.get(args[1]) || message.member;
     if(!target) return message.reply(`No User Mentioned !`)
-   const avembed = new MessageEmbed()
-   .setTitle(`AVATAR OF ${target.user.tag}`)
-   .setColor('RANDOM')
-   .setImage(target.user.displayAvatarURL({dynamic : true , size: 4096 ,format:"png"}))
-   .setFooter(`Requested by ${message.author.tag}`)
-   .setTimestamp()
    
-    message.channel.send(avembed)
+   
+    message.channel.send(message.author.displayAvatarURL({dynamic : true}))
 }
 
 module.exports.help ={
