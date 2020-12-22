@@ -7,7 +7,7 @@ let therole = message.mentions.roles.first();
 if(!therole) return message.reply(`No Role Mentioned !`)
 
 let theroleembed = new Discord.MessageEmbed()
-.setTitle(`Roleinfo OF <a:JSBOTGIF:758518728601632768> __${therole.name}__ <a:JSBOTGIF:758518728601632768> `)
+.setTitle(`Roleinfo OF  __${therole.name}__ ✔️ `)
 .setColor('RANDOM')
 .addField(`Name`,`${therole.name}`)
 .addField(`Role Id`,`${therole.id}`)

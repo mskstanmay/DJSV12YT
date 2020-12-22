@@ -4,7 +4,8 @@ const bot = new Discord.Client();
 
 module.exports.run = (bot,message,args)=>{   
 
-let content = args.slice(2).join(' ')
+let content = args.join(' ');
+if(!content) return message.reply(`Please Specify Something To Embed !`)  
 
 const embedname = new Discord.MessageEmbed()
 .setDescription(content)

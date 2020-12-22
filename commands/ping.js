@@ -1,12 +1,13 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const ms = require('ms');
 
+module.exports.run = async (bot,message,args)=>{
 
-module.exports.run = (bot,message,args)=>{
-
-    if(message.author.id != "685101975385276469") return message.reply(`You're Not A Owner ! `);
-
-    message.reply(`Pong!`);
+const msgsent = await message.channel.send(`Calculating......`);
+const botping = msgsent.createdTimestamp - message.createdTimestamp+"ms";
+const apilatency = ms(bot.ws.ping);
+    msgsent.edit(`Api Latency : ${apilatency} \nMsgLatency : ${botping}`);
 }
 
 module.exports.help ={
