@@ -1,5 +1,6 @@
 {
     "token": "TOKEN HERE",
-    "prefix" : "PREFIX HERE"
+    "prefix" : "PREFIX HERE",
+    "mongourl":"MONGO URL HERE !" 
 
 }
