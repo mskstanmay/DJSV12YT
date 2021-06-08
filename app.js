@@ -1,9 +1,19 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require('./config.json')
-
 const fs = require('fs');
 bot.commands = new Discord.Collection();
+const mongoose = require('mongoose');
+
+bot.login(config.token);
+mongoose.connect(config.mongourl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+}).then(console.log(`Connected To MongoDB !`));
+
+//COMMAND HANDLER 
 
 fs.readdir('./commands',(err,files) =>{
   if(err) console.log(err);
@@ -13,36 +23,28 @@ fs.readdir('./commands',(err,files) =>{
     console.log(`NO COMMANDS FOUND !`);
   }
 
-console.log(`LOADING ${jsfiles.length} COMMANDS !`);
-
-jsfiles.forEach((f,i)=>{
-  let sss = require(`./commands/${f}`);
-  console.log(`${i+1}: ${f} Has Been Loaded !`);  
-  bot.commands.set(sss.help.name,sss)
-})
+  jsfiles.forEach((f,i)=>{
+    let sss = require(`./commands/${f}`);
+    bot.commands.set(sss.help.name,sss)
+  })
+console.log(`LOADED ${jsfiles.length} COMMANDS !`);
 })
 
+//EVENT HANDLER 
 
-const prefix = config.prefix ;
-
-bot.on('ready', () => {
-  console.log(`Logged in as ${bot.user.tag}!`);
+fs.readdir('./events/',(err,files)=>{
+  if(err) return console.error();
+  files.forEach(file=>{
+    if(!file.endsWith('.js')) return;
+    const event = require(`./events/${file}`);
+    let eventname = file.split('.')[0];
+    console.log(`Loaded ${eventname} Event !`);
+    bot.on(eventname , event.bind(null , bot));
   });
-  bot.on("message", async message => {
-    if(message.author.bot) return;
-    if(message.channel.type === "dm") return;  
+  console.log(`Loaded Events !`);
+})
 
-    let messageArray = message.content.split(" ");
-    let command = messageArray[0];
-    let args = messageArray.slice(1);
 
-    if(!command.startsWith(prefix)) return;
 
-    let cmd = bot.commands.get(command.slice(prefix.length));
-    if(cmd) cmd.run(bot, message, args);
-    
-});
-
-bot.login(config.token);
 
 

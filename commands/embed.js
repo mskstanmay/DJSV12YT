@@ -4,8 +4,10 @@ const bot = new Discord.Client();
 
 module.exports.run = (bot,message,args)=>{   
 
+let content = args.slice(2).join(' ')
+
 const embedname = new Discord.MessageEmbed()
-.setDescription(message.content.substring(6))
+.setDescription(content)
 .setColor('0x#00ffff')
 .setFooter(`REQUESTED BY ${message.author.tag}`,`${message.author.displayAvatarURL({dynamic : true})}`)
 .setTimestamp();
