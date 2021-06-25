@@ -1,3 +1,4 @@
+const Discord = require('discord.js')
 module.exports.run = (bot,message,args)=>{
 let therole = message.mentions.roles.first();
 if(!therole) return message.reply(`No Role Mentioned !`)
