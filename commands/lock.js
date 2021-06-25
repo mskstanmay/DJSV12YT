@@ -1,5 +1,3 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
 module.exports.run = async(bot,message,args)=>{
 
 let channeltolock = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
