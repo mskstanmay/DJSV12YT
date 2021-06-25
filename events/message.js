@@ -1,7 +1,4 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
 const {prefix} = require('../config.json')
-
 module.exports = async(bot,message)=>{
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;  
