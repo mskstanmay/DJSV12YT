@@ -1,3 +1,4 @@
+const Discord = require('discord.js')
 module.exports.run = (bot,message,args)=>{   
 let server = message.guild;
       let serverinfoembed = new Discord.MessageEmbed()
