@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const bot = new Discord.Client();
 const canvas = require("discord-canvas"),
 welcomeCanvas = new canvas.Welcome();
 
