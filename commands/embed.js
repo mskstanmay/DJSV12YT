@@ -1,3 +1,4 @@
+const Discord = require('discord.js')
 module.exports.run = (bot,message,args)=>{   
 
 const embedname = new Discord.MessageEmbed()
