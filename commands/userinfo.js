@@ -1,7 +1,4 @@
 const Discord = require('discord.js');
-const bot = new Discord.Client();
-
-
 module.exports.run = (bot,message,args)=>{   
 
     let target = message.mentions.members.first() || message.guild.members.cache.get(args[1]) || message.member;
