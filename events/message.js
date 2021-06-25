@@ -1,5 +1,3 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
 const {prefix} = require('../config.json')
 
 module.exports = async(bot,message)=>{

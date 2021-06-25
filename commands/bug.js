@@ -1,25 +1,22 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
-
-
-module.exports.run = async(bot,message,args)=>{   
-
-    let reason = args.slice(1).join(' ');
-    let embed = new Discord.MessageEmbed()
+const Discord = require("discord.js");
+module.exports.run = async (bot, message, args) => {
+  let reason = args.slice(1).join(" ");
+  let embed = new Discord.MessageEmbed()
     .setTitle(`Bug Found !`)
-    .setDescription(`Reported by ${message.author} | Id: ${message.author.id} \n Server : ${message.guild.name} | Id: ${message.guild.id} \n Reason : ${reason}`)
-    .setColor('RANDOM')
+    .setDescription(
+      `Reported by ${message.author} | Id: ${message.author.id} \n Server : ${message.guild.name} | Id: ${message.guild.id} \n Reason : ${reason}`
+    )
+    .setColor("RANDOM")
     .setTimestamp()
-    .setFooter(`Powered by Yt Tutorials !`)
+    .setFooter(`Powered by Yt Tutorials !`);
 
-message.reply(`Bug Reported !`)
-let chan = await bot.channels.cache.get('777807872100794369');
-await chan.send(embed).catch(err=>{
+  message.reply(`Bug Reported !`);
+  let chan = await bot.channels.cache.get("777807872100794369");
+  await chan.send(embed).catch((err) => {
     console.log(err);
-})
+  });
+};
 
-}
-
-module.exports.help ={
-    name:"bug"
-}
+module.exports.help = {
+  name: "bug",
+};
